@@ -26,6 +26,15 @@ class Ciudad(models.Model):
         db_table = 'eventos_ciudades'
 
 
+class Lugar(models.Model):
+    nombre = models.CharField(max_length=50)
+    direccion = models.CharField(max_length=100)
+    ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'eventos_lugares'
+
+
 class TipoContratacion(models.Model):
     nombre = models.CharField(max_length=30, primary_key=True)
 
@@ -93,3 +102,39 @@ class Sede(models.Model):
 
     class Meta:
         db_table = 'eventos_sedes'
+
+
+class Usuario(models.Model):
+    identificacion = models.CharField(max_length=15, primary_key=True)
+    nombre_usuario = models.CharField(max_length=30)
+    nombre_completo = models.CharField(max_length=60)
+    tipo_relacion = models.CharField(max_length=20)
+    email = models.EmailField(max_length=40)
+    ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'eventos_usuarios'
+
+
+class Evento(models.Model):
+    titulo = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    categorias = models.CharField(max_length=100)
+    fecha = models.DateTimeField()
+    lugar = models.ForeignKey(Lugar, on_delete=models.CASCADE)
+    asistentes = models.ManyToManyField(Usuario, related_name='asistentes')
+    conferencistas = models.ManyToManyField(Usuario, related_name='conferencistas')
+    facultades_organizadoras = models.ManyToManyField(Facultad)
+    programa_organizador = models.ForeignKey(Programa, null=True, blank=True, on_delete=models.SET_NULL)
+
+    class Meta:
+        db_table = 'eventos_eventos'
+
+
+class Comentario(models.Model):
+    evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    texto = models.TextField()
+
+    class Meta:
+        db_table = 'eventos_comentarios'

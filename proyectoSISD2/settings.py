@@ -76,14 +76,20 @@ WSGI_APPLICATION = 'proyectoSISD2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'djongo',
+        'NAME': 'SISD',
+        'CLIENT': {
+            'host': 'mongodb+srv://1007220881:proyectoIcesi@sisd.vevqpo8.mongodb.net/',
+            'username': '1007220881',
+            'password': 'proyectoIcesi',
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1'
+        }
+    }
 }
-}
+
+
+
 
 
 # Password validation
