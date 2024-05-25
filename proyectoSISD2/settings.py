@@ -80,11 +80,17 @@ DATABASES = {
         'NAME': 'SISD',
         'CLIENT': {
             'host': 'mongodb+srv://1007220881:proyectoIcesi@sisd.vevqpo8.mongodb.net/',
-            'username': '1007220881',
-            'password': 'proyectoIcesi',
-            'authSource': 'admin',
-            'authMechanism': 'SCRAM-SHA-1'
         }
+    },
+    
+    'postgresql': {
+        
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'proyectoIcesi',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

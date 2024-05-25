@@ -5,7 +5,7 @@ class Pais(models.Model):
     nombre = models.CharField(max_length=20)
 
     class Meta:
-        db_table = 'eventos_paises'
+        db_table = 'paises'
 
 
 class Departamento(models.Model):
@@ -14,7 +14,7 @@ class Departamento(models.Model):
     cod_pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'eventos_departamentos'
+        db_table = 'departamentos'
 
 
 class Ciudad(models.Model):
@@ -23,7 +23,7 @@ class Ciudad(models.Model):
     cod_dpto = models.ForeignKey(Departamento, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'eventos_ciudades'
+        db_table = 'ciudades'
 
 
 class Lugar(models.Model):
@@ -32,21 +32,21 @@ class Lugar(models.Model):
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'eventos_lugares'
+        db_table = 'lugares'
 
 
 class TipoContratacion(models.Model):
     nombre = models.CharField(max_length=30, primary_key=True)
 
     class Meta:
-        db_table = 'eventos_tipos_contratacion'
+        db_table = 'tipos_contratacion'
 
 
 class TipoEmpleado(models.Model):
     nombre = models.CharField(max_length=30, primary_key=True)
 
     class Meta:
-        db_table = 'eventos_tipos_empleado'
+        db_table = 'tipos_empleado'
 
 
 class Facultad(models.Model):
@@ -57,7 +57,7 @@ class Facultad(models.Model):
     id_decano = models.OneToOneField('Empleado', null=True, blank=True, on_delete=models.SET_NULL, related_name='decano_facultad')
 
     class Meta:
-        db_table = 'eventos_facultades'
+        db_table = 'facultades'
 
 
 class Empleado(models.Model):
@@ -72,7 +72,7 @@ class Empleado(models.Model):
     lugar_nacimiento = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'eventos_empleados'
+        db_table = 'empleados'
 
 
 class Area(models.Model):
@@ -82,7 +82,7 @@ class Area(models.Model):
     id_coordinador = models.OneToOneField(Empleado, on_delete=models.CASCADE, related_name='coordinador_area')
 
     class Meta:
-        db_table = 'eventos_areas'
+        db_table = 'areas'
         unique_together = (('id_coordinador',),)
 
 
@@ -92,7 +92,7 @@ class Programa(models.Model):
     codigo_area = models.ForeignKey(Area, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'eventos_programas'
+        db_table = 'programas'
 
 
 class Sede(models.Model):
@@ -101,7 +101,7 @@ class Sede(models.Model):
     cod_ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'eventos_sedes'
+        db_table = 'sedes'
 
 
 class Usuario(models.Model):
@@ -113,7 +113,7 @@ class Usuario(models.Model):
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'eventos_usuarios'
+        db_table = 'usuarios'
 
 
 class Evento(models.Model):
@@ -128,7 +128,7 @@ class Evento(models.Model):
     programa_organizador = models.ForeignKey(Programa, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
-        db_table = 'eventos_eventos'
+        db_table = 'eventos'
 
 
 class Comentario(models.Model):
@@ -137,4 +137,4 @@ class Comentario(models.Model):
     texto = models.TextField()
 
     class Meta:
-        db_table = 'eventos_comentarios'
+        db_table = 'comentarios'
