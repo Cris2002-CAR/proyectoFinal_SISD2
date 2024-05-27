@@ -75,18 +75,11 @@ WSGI_APPLICATION = 'proyectoSISD2.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'SISD',
-        'CLIENT': {
-            'host': 'mongodb+srv://1007220881:proyectoIcesi@sisd.vevqpo8.mongodb.net/',
-        }
-    },
     
-    'postgresql': {
+    'default': {
         
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'proyectoIcesi',
+        'NAME': 'proyecto_SISD',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',

@@ -1,16 +1,38 @@
-<!-- templates/eventos/listar_eventos.html -->
 
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Lista de Eventos</title>
+    <link rel="stylesheet" href="{% static 'styles/listar_eventos.css' %}">
 </head>
 <body>
-    <h1>Lista de Eventos</h1>
-    <ul>
-        {% for evento in eventos %}
-            <li>{{ evento.titulo }} - {{ evento.fecha }}</li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1>Lista de Eventos</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Fecha</th>
+                    <th>Lugar</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evento in eventos %}
+                    <tr>
+                        <td><a href="{% url 'detalle_evento' evento.id %}">{{ evento.titulo }}</a></td>
+                        <td>{{ evento.fecha }}</td>
+                        <td>{{ evento.lugar.nombre }}</td>
+                        <td>{{ evento.descripcion }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button><a href="{% url 'upload_sql_file' %}">Cargar sql</a></button>
+    </div>
 </body>
 </html>

@@ -1,0 +1,71 @@
+/* Fuente de toda la app */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+:root {
+    --body-color: #C2DDFA;
+    --header-color: #FFFFFF;
+    --primary-color: #0066cc;
+    --text-color: #000000;
+    --header-height: 80px;
+}
+
+body {
+    background-color: var(--body-color);
+    color: var(--text-color);
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    background-color: var(--header-color);
+    height: var(--header-height);
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container p {
+    text-align: left; /* Añade esta línea */
+}
+
+h1 {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 20px;
+    color: var(--primary-color);
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+ul li {
+    padding: 5px 0;
+}

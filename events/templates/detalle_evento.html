@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle del Evento</title>
+    <link rel="stylesheet"  href="{% static 'styles/detalle_evento.css' %}">
+</head>
+<body>
+    <header></header>
+    <div class="container">
+        <h1>{{ evento.titulo }}</h1>
+        <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+        <p><strong>Lugar:</strong> {{ evento.lugar.nombre }} - {{ evento.lugar.direccion }} - {{ evento.lugar.ciudad.nombre }}</p>
+        <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+        <h2>Asistentes</h2>
+        <ul>
+            {% for asistente in evento.asistentes.all %}
+                <li>{{ asistente.nombre_completo }} ({{ asistente.tipo_relacion }})</li>
+            {% endfor %}
+        </ul>
+        <h2>Conferencistas</h2>
+        <ul>
+            {% for conferencista in evento.conferencistas.all %}
+                <li>{{ conferencista.nombre_completo }} ({{ conferencista.tipo_relacion }})</li>
+            {% endfor %}
+        </ul>
+        <h2>Comentarios</h2>
+        <ul>
+            {% for comentario in evento.comentario_set.all %}
+                <li>{{ comentario.usuario.nombre_completo }}: {{ comentario.texto }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+

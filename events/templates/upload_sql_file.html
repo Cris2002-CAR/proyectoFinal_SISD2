@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carga un archivo SQL</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/upload_sql_file.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sube tu archivo SQL</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Cargar</button>
+        </form>
+        <button><a href="{% url 'listar_eventos' %}">Atras</a></button>
+    </div>
+</body>
+</html>
